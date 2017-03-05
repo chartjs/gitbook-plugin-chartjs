@@ -1,0 +1,14 @@
+{% extends template.self %}
+
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ 'gitbook-plugin-chartjs/style.css'|resolveAsset }}">
+    <script src="{{ 'gitbook-plugin-chartjs/Chart.bundle.js'|resolveAsset }}"></script>
+    <script src="{{ 'gitbook-plugin-chartjs/chartjs-plugin-deferred.js'|resolveAsset }}"></script>
+    {% if config.pluginsConfig.chartjs.defaults %}
+    <script>
+        var defaults = {{ config.pluginsConfig.chartjs.defaults|dump }};
+        Chart.defaults = Chart.helpers.configMerge(Chart.defaults, defaults);
+    </script>
+    {% endif %}
+{% endblock %}
